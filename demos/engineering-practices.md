@@ -100,7 +100,7 @@ GitHub.com provides additional tools for managing Copilot at the organizational 
 #### Share a Conversation
 1. **Navigate to GitHub Copilot:** Go to [https://github.com/copilot](https://github.com/copilot)
 2. **Start a chat:** Start a conversation. In the chat window, type the following prompt:
-   ```
+   ```markdown
    What are the advantages of the Go programming language?
    ```
 3. **Share the conversation:** Click the **"Share"** button at the top-right of the chat window
