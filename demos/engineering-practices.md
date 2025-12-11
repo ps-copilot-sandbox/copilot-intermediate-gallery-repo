@@ -78,26 +78,18 @@ Once the debug panel opens, you can explore:
 
 GitHub.com provides additional tools for managing Copilot at the organizational level and sharing knowledge across teams.
 
-### 🎛️ Step 3: Explore System Prompts
+### 🎛️ Step 3: Explore Prompts
 
-**Why this matters:** System prompts define how Copilot behaves across your organization. Understanding these helps ensure consistent, high-quality code generation that follows your team's standards.
+**Why this matters:** Prompts define how Copilot behaves across your organization. Understanding these helps ensure consistent, high-quality code generation that follows your team's standards.
 
-#### System Prompts and Personal Instructions
+#### Personal Instructions
 1. **Navigate to GitHub Copilot:** Go to [https://github.com/copilot](https://github.com/copilot)
-2. **Access settings:** Click the **[...]** menu button in the top-right corner
-3. **Open system prompts:** Select **"System prompt"**
-4. **Exit out:** of the system prompt
-5. **Open settings again:** Click the **[...]** menu button in the top-right corner
-6. **Open personal instructions:** Select **"Personal instructions"**
+2. **Access settings:** Click on your user icon on the bottom-left corner
+3. **Open personal instructions:** Select **"Personal instructions"**
+4. **Add in instructions:** You can add customize guidelines into how Copilot responds to your prompts
 
 #### What to Explore
-- **Available Prompts:** Browse the library of pre-built system prompts
 - **Personal instructions:** Are there any preferences you'd like in the instructions? Test it out!
-
-**🔍 Things to Look For:**
-- How do system prompts influence code style?
-- What coding standards are enforced?
-- How do prompts vary by programming language?
 
 ---
 
@@ -105,9 +97,18 @@ GitHub.com provides additional tools for managing Copilot at the organizational 
 
 **Why this matters:** Shared conversations create a knowledge base of effective AI interactions that your entire team can learn from and build upon.
 
-#### Shared Conversation Instructions
+#### Share a Conversation
 1. **Navigate to GitHub Copilot:** Go to [https://github.com/copilot](https://github.com/copilot)
-2. **Access sharing options:** Click the **[...]** menu button in the top-right corner
+2. **Start a chat:** Start a conversation. In the chat window, type the following prompt:
+   ```markdown
+   What are the advantages of the Go programming language?
+   ```
+3. **Share the conversation:** Click the **"Share"** button at the top-right of the chat window
+4. **Select share:** Select share and copy the link to share with your team
+
+#### View Shared Conversation
+1. **Navigate to GitHub Copilot:** Go to [https://github.com/copilot](https://github.com/copilot)
+2. **Access sharing options:** Click on your user icon on the bottom-left corner
 3. **Open conversation management:** Select **"Manage shared conversations"**
 
 #### What to Explore with Shared Conversations

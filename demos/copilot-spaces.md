@@ -228,8 +228,6 @@ Mark off each item as you complete it:
 - [ ] Set detailed instructions incorporating industry standards
 - [ ] Added relevant project files to the Space context
 - [ ] Used the Space to analyze existing code structure
-- [ ] Implemented a new feature (photo favoriting) with AI assistance
-- [ ] Tested the implemented feature and addressed issues
 - [ ] Documented progress and decisions within the Space
 - [ ] Shared or saved the Space for future collaboration
 

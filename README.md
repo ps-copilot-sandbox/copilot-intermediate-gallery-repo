@@ -49,7 +49,7 @@ Once ready, you can access the application at the forwarded port URL provided in
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/vfm2-testing-co/gallery-repo.git
+   git clone https://github.com/ps-copilot-sandbox/copilot-intermediate-gallery-repo.git
    cd gallery-repo
    ```
 2. Install dependencies:
