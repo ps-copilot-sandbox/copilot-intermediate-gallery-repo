@@ -37,13 +37,13 @@ View premium request percentage to understand how many requests you have left.
 
 ## 🔄 Step 2: Advanced Model Switching (OPTIONAL)
 
-Mode: edit
+Mode: agent
 
 For this demo, try the same coding task with different models and note the differences.
 
 ### Instructions
 
-1. Update your mode to **edit**
+1. Update your mode to **agent**. Should be the default mode.
 2. Select the model you want to try out
 3. Add the following files to the GitHub Copilot Chat UI as related files. You can do so but selecting `Add Context` and typing in the name of each file. OR close out all tabs, then open these three files. Select `Add Context`, then `Open Editors` to grab all open files in your IDE. Either way will gather the below files.
 ```markdown
