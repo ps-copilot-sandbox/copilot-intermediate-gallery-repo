@@ -1,35 +1,35 @@
-# GitHub Copilot Spaces Demo
+# Demo de GitHub Copilot Spaces
 
-Welcome to the GitHub Copilot Spaces demo! In this exercise, you'll learn how to create and utilize GitHub Copilot Spaces to collaborate on development tasks within the Photo Gallery & Portfolio application.
+¡Bienvenido al demo de GitHub Copilot Spaces! En este ejercicio, aprenderás cómo crear y utilizar GitHub Copilot Spaces para colaborar en tareas de desarrollo dentro de la aplicación de Galería de Fotos y Portafolio.
 
-## What You'll Learn
-By the end of this demo, you will:
-- [ ] Understand what GitHub Copilot Spaces are and their benefits
-- [ ] Know how to create a new Copilot Space
-- [ ] Be able to set up a Space with specific goals and context
-- [ ] Complete development tasks using collaborative AI assistance
-- [ ] Share and manage Spaces with team members
+## Lo que Aprenderás
+Al finalizar este demo, podrás:
+- [ ] Comprender qué son los GitHub Copilot Spaces y sus beneficios
+- [ ] Saber cómo crear un nuevo Copilot Space
+- [ ] Poder configurar un Space con objetivos y contexto específicos
+- [ ] Completar tareas de desarrollo usando asistencia de IA colaborativa
+- [ ] Compartir y administrar Spaces con miembros del equipo
 
-**Estimated Time:** 20-25 minutes
+**Tiempo Estimado:** 20-25 minutos
 
-## 🎯 Step 1: Create Your First Copilot Space
+## 🎯 Paso 1: Crear tu Primer Copilot Space
 
-**Goal:** Set up a dedicated Copilot Space for working on gallery features.
+**Objetivo:** Configurar un Copilot Space dedicado para trabajar en funcionalidades de la galería.
 
-### Setup
-1. Go to `https://github.com/copilot/spaces`
-2. Select `Create Space`
+### Configuración
+1. Ve a `https://github.com/copilot/spaces`
+2. Selecciona `Create Space`
 
-### Group A Option: Security Analysis & Hardening
+### Opción del Grupo A: Análisis y Fortalecimiento de Seguridad
 
-1. Type in name `Photo Gallery - Security Assessment`
-2. Select the owner `Username` OR `OrgName`
-3. Add in description `Implement security best practices for the photo gallery application`
-4. Select `Save`
+1. Escribe el nombre `Photo Gallery - Security Assessment`
+2. Selecciona el propietario `Username` O `OrgName`
+3. Agrega la descripción `Implement security best practices for the photo gallery application`
+4. Selecciona `Save`
 
-**Adding instructions**
+**Agregando instrucciones**
 
-5. Select `Instructions` and add the following prompt:
+5. Selecciona `Instructions` y agrega el siguiente prompt:
 ```markdown
 You are a security expert helping to analyze and improve the security posture of a Next.js 15 photo gallery application. Focus on:
 
@@ -218,21 +218,21 @@ Following industry best practices, what documentation structure would you recomm
 
 Share your thoughts and any tips you discovered for making the most of Copilot Spaces in a team setting.
 
-**Expected Result:** You will have successfully used AI assistance with industry-standard external sources to either conduct a security analysis or create comprehensive documentation for the Photo Gallery & Portfolio application.
+**Resultado Esperado:** Habrás usado exitosamente asistencia de IA con fuentes externas estándar de la industria para conducir un análisis de seguridad o crear documentación completa para la aplicación de Galería de Fotos y Portafolio.
 
-## ✅ Completion Checklist
+## ✅ Lista de Verificación de Completitud
 
-Mark off each item as you complete it:
+Marca cada ítem al completarlo:
 
-- [ ] Created a new GitHub Copilot Space with a clear security or documentation focus
-- [ ] Set detailed instructions incorporating industry standards
-- [ ] Added relevant project files to the Space context
-- [ ] Used the Space to analyze existing code structure
-- [ ] Documented progress and decisions within the Space
-- [ ] Shared or saved the Space for future collaboration
+- [ ] Creé un nuevo GitHub Copilot Space con un enfoque claro en seguridad o documentación
+- [ ] Configuré instrucciones detalladas incorporando estándares de la industria
+- [ ] Agregué archivos de proyecto relevantes al contexto del Space
+- [ ] Usé el Space para analizar la estructura de código existente
+- [ ] Documenté el progreso y decisiones dentro del Space
+- [ ] Compartí o guardé el Space para colaboración futura
 
-## 🚀 What's Next?
+## 🚀 ¿Qué Sigue?
 
-Congratulations! You've successfully created and used a GitHub Copilot Space for focused development work.
+¡Felicidades! Has creado y usado exitosamente un GitHub Copilot Space para trabajo de desarrollo enfocado.
 
-👉 **[Start GitHub Copilot Cloud Agent Demo](./coding-agent.md)**
+👉 **[Iniciar Demo de Agente en la Nube de GitHub Copilot](./coding-agent.md)**

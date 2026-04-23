@@ -1,49 +1,48 @@
-# Cloud Agent Demo
+# Demo de Agente en la Nube
 
-Welcome to the GitHub Copilot Cloud Agent demo! This hands-on guide will help you experience how GitHub Copilot can accelerate building and enhancing features in your Photo Gallery & Portfolio application.
-
----
-
-## What You'll Learn
-By the end of this demo, you will:
-- [ ] Assign GitHub Copilot to a GitHub issue
-- [ ] Review Copilot-generated pull requests and session details
-- [ ] Practice collaborative code review and iteration
-
-**Estimated Time:** 10 minutes
-
-## 🎯 Step 1: Assign GitHub Copilot to an Issue
-
-1. Open the issue you created in the previous MCP exercise.
-2. Assign **GitHub Copilot** to the issue.
-3. Observe as Copilot works through the steps and generates a solution.
+¡Bienvenido al demo de Agente en la Nube de GitHub Copilot! Esta guía práctica te ayudará a experimentar cómo GitHub Copilot puede acelerar la construcción y mejora de funcionalidades en tu aplicación de Galería de Fotos y Portafolio.
 
 ---
 
-## 📚 Step 2: Review Copilot's Changes
+## Lo que Aprenderás
+Al finalizar este demo, podrás:
+- [ ] Asignar GitHub Copilot a un issue de GitHub
+- [ ] Revisar pull requests generados por Copilot y detalles de sesión
+- [ ] Practicar revisión de código colaborativa e iteración
 
-1. Open the pull request (PR) created by Copilot.
-2. Click **View Session** to see Copilot’s workflow and decisions.
-3. Return to the PR and select **View Changes** to inspect the code modifications.
-4. Review and discuss the changes Copilot has made.
+**Tiempo Estimado:** 10 minutos
 
----
+## 🎯 Paso 1: Asignar GitHub Copilot a un Issue
 
-## ✅ Completion Checklist
-
-Mark each item as you complete it:
-
-- [ ] Assigned Copilot to the issue
-- [ ] Viewed Copilot’s session
-- [ ] Reviewed the PR changes
-- [ ] Discussed or merged the PR
+1. Abre el issue que creaste en el ejercicio anterior de MCP.
+2. Asigna **GitHub Copilot** al issue.
+3. Observa cómo Copilot trabaja a través de los pasos y genera una solución.
 
 ---
 
-## 🚀 What's Next?
+## 📚 Paso 2: Revisar los Cambios de Copilot
 
-Congratulations! You’ve completed all Cloud Agent demos and practiced using GitHub Copilot to build, refactor, and collaborate on real features in your Photo Gallery & Portfolio application.
+1. Abre el pull request (PR) creado por Copilot.
+2. Haz click en **View Session** para ver el flujo de trabajo y decisiones de Copilot.
+3. Regresa al PR y selecciona **View Changes** para inspeccionar las modificaciones de código.
+4. Revisa y discute los cambios que Copilot ha hecho.
 
-Keep exploring Copilot’s capabilities, share your learnings with your team, and continue building great things. For advanced tips, check out the official documentation or create your own custom demos.
+---
 
-Happy coding!
+## ✅ Lista de Verificación de Completitud
+
+Marca cada ítem al completarlo:
+
+- [ ] Asigné Copilot al issue
+- [ ] Vi la sesión de Copilot
+- [ ] Revisé los cambios del PR
+- [ ] Discutí o hice merge del PR
+
+---
+
+## 🚀 ¿Qué Sigue?
+
+¡Felicidades! Has completado todos los demos de Agente en la Nube y practicado el uso de GitHub Copilot para construir, refactorizar y colaborar en funcionalidades reales en tu aplicación de Galería de Fotos y Portafolio.
+
+Sigue explorando las capacidades de Copilot, comparte tus aprendizajes con tu equipo y continúa construyendo cosas grandiosas. Para consejos avanzados, consulta la documentación oficial o crea tus propios demos personalizados.
+¡Feliz codificación!

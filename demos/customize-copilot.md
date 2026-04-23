@@ -1,128 +1,128 @@
-# Customize Copilot Demo
+# Demo de Personalización de Copilot
 
-Welcome to the GitHub Copilot customization demo! Here you'll learn how to tailor GitHub Copilot to your specific needs and workflow preferences. This demo covers advanced features that help you optimize your AI-assisted coding experience for maximum productivity.
+¡Bienvenido al demo de personalización de GitHub Copilot! Aquí aprenderás cómo adaptar GitHub Copilot a tus necesidades específicas y preferencias de flujo de trabajo. Este demo cubre funcionalidades avanzadas que te ayudan a optimizar tu experiencia de codificación asistida por IA para máxima productividad.
 
-## What You'll Learn
-By the end of this demo, you will:
-- [ ] Know how to monitor your premium request usage
-- [ ] Switch between AI models in Chat and Code completions (OPTIONAL)
-- [ ] Use prompt files for consistent AI interactions
-- [ ] Utilize custom agent modes for various development tasks
-- [ ] Set up custom instructions with MCP servers for personalized AI behavior
+## Lo que Aprenderás
+Al finalizar este demo, podrás:
+- [ ] Saber cómo monitorear tu uso de solicitudes premium
+- [ ] Cambiar entre modelos de IA en Chat y completado de código (OPCIONAL)
+- [ ] Usar archivos de prompts para interacciones consistentes con IA
+- [ ] Utilizar modos de agente personalizados para varias tareas de desarrollo
+- [ ] Configurar instrucciones personalizadas con servidores MCP para comportamiento de IA personalizado
 
-**Estimated Time:** 25-30 minutes
-
----
-
-## 📊 Step 1: Monitor Premium Request
-
-### Option A: Access the Premium Dashboard
-
-In IDE:
-
-1. **Open VS Code** and ensure GitHub Copilot is active
-2. **Locate Copilot status:** Look for the GitHub Copilot logo in the bottom-right status bar
-
-### Option B: Access the Premium Dashboard
-
-In github.com:
-
-1. **Navigate to GitHub:** Go to [https://github.com/settings/copilot/features](https://github.com/settings/copilot/features)
-2. **Sign in:** Ensure you're logged into your GitHub account
-3. **View dashboard:** Review your premium request usage percentage and limits
-
-View premium request percentage to understand how many requests you have left.
+**Tiempo Estimado:** 25-30 minutos
 
 ---
 
-## 🔄 Step 2: Advanced Model Switching (OPTIONAL)
+## 📊 Paso 1: Monitorear Solicitud Premium
 
-Mode: agent
+### Opción A: Acceder al Panel Premium
 
-For this demo, try the same coding task with different models and note the differences.
+En el IDE:
 
-### Instructions
+1. **Abre VS Code** y asegúrate de que GitHub Copilot esté activo
+2. **Ubica el estado de Copilot:** Busca el logo de GitHub Copilot en la barra de estado inferior derecha
 
-1. Update your mode to **agent**. Should be the default mode.
-2. Select the model you want to try out
-3. Add the following files to the GitHub Copilot Chat UI as related files. You can do so but selecting `Add Context` and typing in the name of each file. OR close out all tabs, then open these three files. Select `Add Context`, then `Open Editors` to grab all open files in your IDE. Either way will gather the below files.
+### Opción B: Acceder al Panel Premium
+
+En github.com:
+
+1. **Navega a GitHub:** Ve a [https://github.com/settings/copilot/features](https://github.com/settings/copilot/features)
+2. **Inicia sesión:** Asegúrate de estar conectado a tu cuenta de GitHub
+3. **Ver panel:** Revisa tu porcentaje de uso de solicitudes premium y límites
+
+Ve el porcentaje de solicitud premium para entender cuántas solicitudes te quedan.
+
+---
+
+## 🔄 Paso 2: Cambio Avanzado de Modelo (OPCIONAL)
+
+Modo: edit (editar)
+
+Para este demo, prueba la misma tarea de codificación con diferentes modelos y nota las diferencias.
+
+### Instrucciones
+
+1. Actualiza tu modo a **edit**
+2. Selecciona el modelo que quieres probar
+3. Agrega los siguientes archivos al UI de Chat de GitHub Copilot como archivos relacionados. Puedes hacerlo seleccionando `Add Context` y escribiendo el nombre de cada archivo. O cierra todas las pestañas, luego abre estos tres archivos. Selecciona `Add Context`, luego `Open Editors` para tomar todos los archivos abiertos en tu IDE. Cualquiera de las dos formas reunirá los archivos de abajo.
 ```markdown
 - /src/app/gallery/page.tsx
 - /src/lib/mock-photo-data.ts
 - /src/components/GalleryGrid.tsx
 ```
-4. Stay on the last page: GalleryGrid and highlight lines 26 - 43
-5. Add in below prompt:
+4. Permanece en la última página: GalleryGrid y resalta las líneas 26 - 43
+5. Agrega el siguiente prompt:
 
 Prompt
 ```typescript
-// Ask each model: "Help me refactor this function for better performance, readability, and add TypeScript improvements"
+// Pregunta a cada modelo: "Ayúdame a refactorizar esta función para mejor rendimiento, legibilidad y agrega mejoras de TypeScript"
 ```
 
-Repeat steps 2-5 for two other models of your choosing.
+Repite los pasos 2-5 para otros dos modelos de tu elección.
 
-Which answers did you like the best? which the least? Discuss in your group.
+¿Qué respuestas te gustaron más? ¿Cuáles menos? Discute en tu grupo.
 
 ---
 
-## 📝 Step 3: Use Prompt Files
+## 📝 Paso 3: Usar Archivos de Prompts
 
-1. Go to the `/.github/prompts` folder and look through the files.
-- There are two files to choose from each in varying difficult levels.
-- Look over the format of each before choosing which one.
-2. Choose the file you want to test out.
-3. Add in the prompt below depending on the prompt file.
+1. Ve a la carpeta `/.github/prompts` y revisa los archivos.
+- Hay dos archivos para elegir, cada uno en diferentes niveles de dificultad.
+- Revisa el formato de cada uno antes de elegir cuál usar.
+2. Elige el archivo que quieres probar.
+3. Agrega el prompt de abajo dependiendo del archivo de prompt.
 
-**Generate mock data**
+**Generar datos mock**
 Prompt
 ```markdown
 /generate-mock-photo-data 3
 ```
 
-**Refactor UI component**
+**Refactorizar componente UI**
 Prompt
 ```markdown
-/generate-new-ui for the recent galleries table in the admin page. I want it to be the replacement component for the current table and be reuseable.  Place it in the layout folder.
+/generate-new-ui para la tabla de galerías recientes en la página admin. Quiero que sea el componente de reemplazo para la tabla actual y que sea reutilizable. Colócalo en la carpeta layout.
 ```
 
-**BONAS CHALLENGE:** Create your own prompt file for unit tests
+**DESAFÍO BONUS:** Crea tu propio archivo de prompt para pruebas unitarias
 
-Ask copilot to generate a new prompt file for unit tests. Use the following steps:
+Pide a copilot que genere un nuevo archivo de prompt para pruebas unitarias. Usa los siguientes pasos:
 
-1. Go to GitHub Copilot UI
-2. Click on the gear icon in the top right corner
-3. Select "Prompt Files"
-4. Click the plus icon that says "New prompt file"
-5. Select the folder you want to save the file in i.e `.github/prompts/`
-6. Name the file 'generate-unit-tests.prompt.md'
-7. Create your own custom prompt file with GitHub Copilot:
+1. Ve al UI de GitHub Copilot
+2. Haz click en el ícono de engranaje en la esquina superior derecha
+3. Selecciona "Prompt Files"
+4. Haz click en el ícono de más que dice "New prompt file"
+5. Selecciona la carpeta donde quieres guardar el archivo, ej. `.github/prompts/`
+6. Nombra el archivo 'generate-unit-tests.prompt.md'
+7. Crea tu propio archivo de prompt personalizado con GitHub Copilot:
 
 ```markdown
-<!-- Add in related files to Ask mode -->
-Related files:
+<!-- Agrega archivos relacionados al modo Ask -->
+Archivos relacionados:
 - /src/components/ui/FeatureCard.tsx
 - /.github/prompts/generate-new-ui.prompt.md
 - /.github/prompts/generate-mock-photo-data.prompt.md
 
-<!-- Copy/paste prompt below -->
-help me create a prompt files for creating unit test generation for the UI components.
+<!-- Copia/pega el prompt de abajo -->
+ayúdame a crear un archivo de prompts para crear generación de pruebas unitarias para los componentes UI.
 ```
 
-## 🎭 Step 4: Utilize Custom Agent Modes
+## 🎭 Paso 4: Utilizar Modos de Agente Personalizados
 
-1. Look over the `Plan.agent.md` in the `.github/agents` file to see the expected behavior of the mode
-2. Go to GitHub Copilot Chat
-3. Update mode to "Plan" mode
-4. Add in prompt below and look over the suggestion
+1. Revisa el `Plan.agent.md` en el archivo `.github/agents` para ver el comportamiento esperado del modo
+2. Ve a GitHub Copilot Chat
+3. Actualiza el modo a modo "Plan"
+4. Agrega el prompt de abajo y revisa la sugerencia
 
 ```markdown
-help me plan out a new page for creating new galleries
+ayúdame a planificar una nueva página para crear nuevas galerías
 ```
-**DISCUSSION**
-Look through response. What other modes would be helpful for this repo?
+**DISCUSIÓN**
+Revisa la respuesta. ¿Qué otros modos serían útiles para este repo?
 
-**If time permits**
-Try implementing the changes from the plan using a different mode to explore how the experience varies.
+**Si el tiempo lo permite**
+Intenta implementar los cambios del plan usando un modo diferente para explorar cómo varía la experiencia.
 
 ## 🛠️ Step 5: Custom instructions and MCP Servers
 
@@ -152,55 +152,55 @@ Look over this file and notice how its a good starting point for this project. Y
 
 Custom instructions works in tandem with MCP to help you guide the agent.
 
-### Part Two: MCP Authentication
+### Parte Dos: Autenticación MCP
 
-1. Go to `.vscode/mcp.json` and look over the configuration file. There are two options to choose from depending on your preference and version. For OAuth, refer to `Option A` below. For PAT instructions, refer to `Option B`
+1. Ve a `.vscode/mcp.json` y revisa el archivo de configuración. Hay dos opciones para elegir dependiendo de tu preferencia y versión. Para OAuth, reférete a `Opción A` abajo. Para instrucciones PAT, reférete a `Opción B`
 
-**Option A:** VSCode using OAuth (Version 1.101 or greater) Instructions
+**Opción A:** Instrucciones para VSCode usando OAuth (Versión 1.101 o superior)
 
-2. Look for server under `// Using OAuth (version 1.101 or greater)`
-3. Click `start`
-4. A pop up will appear for the authentication process which will say "The MCP Server Definition 'github' wants to authenticate to GitHub."
-5. Select "Allow"
-6. Select the account you want to authenticate and press enter
+2. Busca el servidor bajo `// Using OAuth (version 1.101 or greater)`
+3. Haz click en `start`
+4. Aparecerá una ventana emergente para el proceso de autenticación que dirá "The MCP Server Definition 'github' wants to authenticate to GitHub."
+5. Selecciona "Allow"
+6. Selecciona la cuenta que quieres autenticar y presiona enter
 
-**Option B:** VSCode using GitHub PAT Instructions
+**Opción B:** Instrucciones para VSCode usando GitHub PAT
 
-2. Follow instructions from [GitHub MCP Server Repo](https://github.com/github/github-mcp-server?tab=readme-ov-file#remote-github-mcp-server)
+2. Sigue las instrucciones de [GitHub MCP Server Repo](https://github.com/github/github-mcp-server?tab=readme-ov-file#remote-github-mcp-server)
 
-Now that you have authenticated via OAuth or PAT, let's confirm the tools.
+Ahora que te has autenticado vía OAuth o PAT, confirmemos las herramientas.
 
-1. Go to GitHub Copilot Chat
-2. Select "Agent" mode
-3. Click on the tools icon
-4. View all of the available toolsets
+1. Ve a GitHub Copilot Chat
+2. Selecciona modo "Agent"
+3. Haz click en el ícono de herramientas
+4. Ve todos los conjuntos de herramientas disponibles
 
-### Part Three: Creating issues in this template with MCP
+### Parte Tres: Crear issues en esta plantilla con MCP
 
-1. Since you are already in agent mode in VSCode, type the following prompt in chat to create an issue with MCP server
+1. Ya que estás en modo agente en VSCode, escribe el siguiente prompt en el chat para crear un issue con el servidor MCP
 
 ```markdown
-create an issue for this repo for a feature request to toggle between dark mode and light mode
+crea un issue para este repo para una solicitud de funcionalidad para alternar entre modo oscuro y modo claro
 ```
 
-2. Look over the response. Once confirmed, press "continue"
-3. Go to the repository and view the issue creation!
+2. Revisa la respuesta. Una vez confirmado, presiona "continue"
+3. ¡Ve al repositorio y visualiza la creación del issue!
 
-## ✅ Completion Checklist
+## ✅ Lista de Verificación de Completitud
 
-Mark off each item as you complete it:
+Marca cada ítem al completarlo:
 
-- [ ] Explored premium request monitoring and identified usage patterns
-- [ ] Practiced model switching techniques
-- [ ] Used project-specific prompt file
-- [ ] Experimented with different custom agent modes
-- [ ] Understood MCP servers or set up custom instruction patterns
-- [ ] Applied customizations to improve your development workflow
+- [ ] Exploré el monitoreo de solicitudes premium e identifiqué patrones de uso
+- [ ] Practiqué técnicas de cambio de modelo
+- [ ] Usé archivo de prompt específico del proyecto
+- [ ] Experimenté con diferentes modos de agente personalizados
+- [ ] Entendí los servidores MCP o configuré patrones de instrucción personalizada
+- [ ] Apliqué personalizaciones para mejorar mi flujo de trabajo de desarrollo
 
-## 🚀 What's Next?
+## 🚀 ¿Qué Sigue?
 
-Excellent work! You've now mastered the advanced customization features of GitHub Copilot.
+¡Excelente trabajo! Ahora has dominado las funcionalidades avanzadas de personalización de GitHub Copilot.
 
 ---
 
-👉 **[Start Copilot Spaces Demo](./copilot-spaces.md)**
+👉 **[Iniciar Demo de Copilot Spaces](./copilot-spaces.md)**

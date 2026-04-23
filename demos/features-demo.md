@@ -1,127 +1,127 @@
-# Features Demo
+# Demo de Funcionalidades
 
-Welcome to this repository! You're probably wondering what it is and how it works. We will be working with this repository for the duration of this training, so it's important to find out what it's doing now!
+¡Bienvenido a este repositorio! Probablemente te estés preguntando qué es y cómo funciona. Trabajaremos con este repositorio durante toda la capacitación, ¡así que es importante descubrir qué está haciendo ahora!
 
-Let's start off by learning the different modes.
+Comencemos aprendiendo los diferentes modos.
 
-## What You'll Learn
-By the end of this demo, you will:
-- [ ] Understand GitHub Copilot's core features
-- [ ] Know how to use chat participants and slash commands
-- [ ] Be able to generate code with AI assistance
-- [ ] Know how to review and commit AI-generated code
+## Lo que Aprenderás
+Al finalizar este demo, podrás:
+- [ ] Comprender las funcionalidades principales de GitHub Copilot
+- [ ] Saber cómo usar participantes de chat y comandos slash
+- [ ] Poder generar código con asistencia de IA
+- [ ] Saber cómo revisar y hacer commit de código generado por IA
 
-**Estimated Time:** 15-20 minutes
+**Tiempo Estimado:** 15-20 minutos
 
-## 🚀 Getting Started
+## 🚀 Comenzando
 
-More information on installation can be found in the [README](../README.md) file. For a quick start, use the following steps:
+Más información sobre la instalación se puede encontrar en el archivo [README](../README.md). Para un inicio rápido, usa los siguientes pasos:
 
-1. **Open the repository in your IDE** (e.g., VS Code)
-2. **Create new branch:** `git checkout -b USERNAME-copilot-exercises`
-2. **Install packages**: Run `npm install` in the terminal
-3. **Start the development server**: Run `npm run dev`
-4. **Open the project in your browser**: Go to [http://localhost:3000](http://localhost:3000) for a live preview
+1. **Abre el repositorio en tu IDE** (ej., VS Code)
+2. **Crear nueva rama:** `git checkout -b USUARIO-ejercicios-copilot`
+3. **Instalar paquetes**: Ejecuta `npm install` en la terminal
+4. **Iniciar el servidor de desarrollo**: Ejecuta `npm run dev`
+5. **Abrir el proyecto en tu navegador**: Ve a [http://localhost:3000](http://localhost:3000) para una vista previa en vivo
 
-Continue with the demo by following the steps below.
+Continúa con el demo siguiendo los pasos a continuación.
 
-## 🎯 Step 1: Discover Available Features
+## 🎯 Paso 1: Descubrir Funcionalidades Disponibles
 
-Mode: Ask
+Modo: Ask (Preguntar)
 
-**Goal:** Learn what GitHub Copilot can do for you in Ask mode.
+**Objetivo:** Aprender qué puede hacer GitHub Copilot por ti en modo Ask.
 
-**Action:** Type the following command in the Copilot chat:
+**Acción:** Escribe el siguiente comando en el chat de Copilot:
 Prompt
 ```markdown
 /help
 ```
 
-**Expected Result:** You'll see a list of available commands and features.
+**Resultado Esperado:** Verás una lista de comandos y funcionalidades disponibles.
 
 ---
 
-## 📚 Step 2: Learn About the Project
+## 📚 Paso 2: Aprender Sobre el Proyecto
 
-### 2.1 Get Project Overview
+### 2.1 Obtener Resumen del Proyecto
 **Prompt:**
 ```markdown
-@workspace Give me a summary of the project and give an overview of the most impactful files. 
+@workspace Dame un resumen del proyecto y una descripción general de los archivos más importantes.
 ```
 
-**Follow-up Action:**
-- Select the first page in the "Most Impactful Files"
-- Highlight the first section
+**Acción de Seguimiento:**
+- Selecciona la primera página en "Most Impactful Files" (Archivos Más Importantes)
+- Resalta la primera sección
 
-### 2.2 Explain Selected Code
+### 2.2 Explicar Código Seleccionado
 **Prompt:**
 ```markdown
-@workspace /explain 
+@workspace /explain
 ```
 
-**What this does:** Copilot will explain the highlighted code section in detail.
+**Qué hace esto:** Copilot explicará en detalle la sección de código resaltada.
 
-### 2.3 Get Improvement Suggestions
+### 2.3 Obtener Sugerencias de Mejoras
 **Prompt:**
 ```markdown
-Tell me about the improvements that can be made in this repo.
+Dime sobre las mejoras que se pueden hacer en este repo.
 ```
 
-**💡 Pro Tip:** Copilot can help not only with learning but also with planning and ideas!
+**💡 Consejo:** ¡Copilot puede ayudar no solo con el aprendizaje sino también con planificación e ideas!
 
-## 💻 Step 3: Generate Code with Copilot code completions
+## 💻 Paso 3: Generar Código con Completado de Código de Copilot
 
-### Code Completions Instructions
-1. **Navigate to file:** Open [`src/app/layout.tsx`](src/app/layout.tsx)
-2. **Find location:** Go to line 52 `{/* REPLACE THIS COMMENT */}`
-3. **Remove line 52 comment:** and replace it with the following comment:
+### Instrucciones para Completado de Código
+1. **Navega al archivo:** Abre [`src/app/layout.tsx`](src/app/layout.tsx)
+2. **Encuentra la ubicación:** Ve a la línea 52 `{/* REPLACE THIS COMMENT */}`
+3. **Elimina el comentario de la línea 52:** y reemplázalo con el siguiente comentario:
 
 ```tsx
-{/* Create a footer for this section. It should contain the logo and copyright information. */}
+{/* Crear un footer para esta sección. Debe contener el logo e información de copyright. */}
 ```
 
-5. **Wait for suggestion:** Copilot will suggest code automatically
-6. **Accept suggestion:** Press `Tab` to accept or `Esc` to dismiss
-7. **Check your changes:** Save the file and refresh [http://localhost:3000](http://localhost:3000) to see your new footer
+5. **Espera la sugerencia:** Copilot sugerirá código automáticamente
+6. **Acepta la sugerencia:** Presiona `Tab` para aceptar o `Esc` para descartar
+7. **Verifica tus cambios:** Guarda el archivo y actualiza [http://localhost:3000](http://localhost:3000) para ver tu nuevo footer
 
-## 📝 Step 4: Review and Commit Your Changes
+## 📝 Paso 4: Revisar y Hacer Commit de tus Cambios
 
-### Option A: AI-Powered Review (Premium Feature)
-If you have premium access:
+### Opción A: Revisión con IA (Funcionalidad Premium)
+Si tienes acceso premium:
 
-1. **Select generated code:** Highlight the footer code that was created
-2. **Open Copilot menu:** Right-click → Select "Copilot"
-3. **Get review:** Choose "Review and Comment"
-4. **Process feedback:** Review suggestions and accept/discard as needed
+1. **Selecciona el código generado:** Resalta el código del footer que fue creado
+2. **Abre el menú de Copilot:** Click derecho → Selecciona "Copilot"
+3. **Obtén revisión:** Elige "Review and Comment" (Revisar y Comentar)
+4. **Procesa el feedback:** Revisa las sugerencias y acepta/descarta según sea necesario
 
-### Option B: Manual Review (Free Alternative)
-If you don't have premium access:
+### Opción B: Revisión Manual (Alternativa Gratuita)
+Si no tienes acceso premium:
 
-1. **Read the code:** Review what was generated
-2. **Check functionality:** Does it match the requirements?
-3. **Verify style:** Does it follow the project's coding standards?
+1. **Lee el código:** Revisa lo que fue generado
+2. **Verifica funcionalidad:** ¿Coincide con los requisitos?
+3. **Verifica el estilo:** ¿Sigue los estándares de codificación del proyecto?
 
-### Commit Your Changes
-1. **Open Source Control:** Click the Source Control icon in the left sidebar
-2. **Generate commit message:** Hover over the commit message box → Click "Generate Commit Message with Copilot"
-3. **Review and edit:** Modify the generated message if needed
-4. **Commit:** Click "Commit" then "Sync Changes" to push
+### Hacer Commit de tus Cambios
+1. **Abre Control de Código:** Haz click en el ícono de Source Control en la barra lateral izquierda
+2. **Genera mensaje de commit:** Pasa el mouse sobre la caja de mensaje de commit → Click en "Generate Commit Message with Copilot" (Generar Mensaje de Commit con Copilot)
+3. **Revisa y edita:** Modifica el mensaje generado si es necesario
+4. **Commit:** Haz click en "Commit" y luego "Sync Changes" para enviar
 
-**🎉 Success indicator:** You should see your changes in the git history!
+**🎉 Indicador de éxito:** ¡Deberías ver tus cambios en el historial de git!
 
-## ✅ Completion Checklist
+## ✅ Lista de Verificación de Completitud
 
-Mark off each item as you complete it:
+Marca cada ítem al completarlo:
 
-- [ ] Used `/help` command successfully
-- [ ] Got project summary with `@workspace`
-- [ ] Explained code with `@workspace /explain`
-- [ ] Generated footer code with AI
-- [ ] Reviewed the generated code
-- [ ] Committed changes to git
+- [ ] Usé el comando `/help` exitosamente
+- [ ] Obtuve resumen del proyecto con `@workspace`
+- [ ] Expliqué código con `@workspace /explain`
+- [ ] Generé código de footer con IA
+- [ ] Revisé el código generado
+- [ ] Hice commit de los cambios a git
 
-## 🚀 What's Next?
+## 🚀 ¿Qué Sigue?
 
-Congratulations! You've completed your first GitHub Copilot demo.
+¡Felicidades! Has completado tu primer demo de GitHub Copilot.
 
-👉 **[Start Engineering Practices Demo](./engineering-practices.md)**
+👉 **[Iniciar Demo de Desarrollo de Componentes](./component-development.md)** - Construye componentes React con TypeScript usando Copilot

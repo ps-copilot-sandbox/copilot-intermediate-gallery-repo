@@ -123,3 +123,7 @@ npm run dev  # Starts development server with Turbopack
    - Use Tailwind classes for styling
    - Follow dark mode patterns
    - Maintain responsive design
+
+
+
+#Alwys try to respond me in Spanish, unless I ask you to respond in English.
