@@ -49,7 +49,8 @@ export default function RootLayout({
           </div>
         </header>
         {children}
-        {/* REPLACE THIS COMMENT */}
+        {/* Create a footer for this section. It should contain the logo and copyright information. */}
+        <footer className="border-t bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm py-4 mt-8"></footer>
       </body>
     </html>
   );
