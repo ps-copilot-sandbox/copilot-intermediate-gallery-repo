@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Heart, Download, Share2, Eye, Tag } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Photo, mockPhotos } from '@/lib/mock-photo-data';
@@ -27,6 +27,29 @@ export function GalleryGrid({
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [likedPhotos, setLikedPhotos] = useState<Set<string>>(new Set());
 
+  useEffect(() => {
+    if (!selectedPhoto) {
+      return;
+    }
+
+    const originalBodyOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedPhoto(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedPhoto]);
+
   // Filter photos based on selected tags and search query
   const filteredPhotos = mockPhotos.filter(photo => {
     // Filter by tags
@@ -45,7 +68,6 @@ export function GalleryGrid({
   // Calculate pagination
   const totalPhotos = filteredPhotos.length;
   const photosPerPage = limit;
-  const totalPages = Math.ceil(totalPhotos / photosPerPage);
   const startIndex = 0;
   const endIndex = currentPage * photosPerPage;
   const displayedPhotos = filteredPhotos.slice(startIndex, endIndex);
@@ -211,11 +233,22 @@ export function GalleryGrid({
 
       {/* Photo Detail Modal - Placeholder for future implementation */}
       {selectedPhoto && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedPhoto(null)}
+        >
+          <div
+            className="bg-white dark:bg-slate-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gallery-photo-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">{selectedPhoto.title}</h2>
+                <h2 id="gallery-photo-modal-title" className="text-2xl font-bold">
+                  {selectedPhoto.title}
+                </h2>
                 <button
                   onClick={() => setSelectedPhoto(null)}
                   className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
