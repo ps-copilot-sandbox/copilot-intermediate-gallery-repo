@@ -2,12 +2,9 @@
 
 Welcome to this repository! You're probably wondering what it is and how it works. We will be working with this repository for the duration of this training, so it's important to find out what it's doing now!
 
-Let's start off by learning the different modes.
-
 ## What You'll Learn
 By the end of this demo, you will:
 - [ ] Understand GitHub Copilot's core features
-- [ ] Know how to use chat participants and slash commands
 - [ ] Be able to generate code with AI assistance
 - [ ] Plan and implement changes using AI assistance
 - [ ] Know how to review and commit AI-generated code
@@ -16,64 +13,46 @@ By the end of this demo, you will:
 
 ## 🚀 Getting Started
 
-More information on installation can be found in the [README](../README.md) file. For a quick start, use the following steps:
-
-1. **Open the repository in your IDE** (e.g., VS Code)
-2. **Create new branch:** `git checkout -b USERNAME-copilot-exercises`
-2. **Install packages**: Run `npm install` in the terminal
-3. **Start the development server**: Run `npm run dev`
-4. **Open the project in your browser**: Go to [http://localhost:3000](http://localhost:3000) for a live preview
-
-Continue with the demo by following the steps below.
+More information on installation can be found in the [README](../README.md) file.
 
 ## 🎯 Challenge One: Improve gallery modal UX
 
 For this challenge, we will improve the photo detail modal behavior in [GalleryGrid](../src/components/gallery/GalleryGrid.tsx). The goal is to make the modal feel polished and easier to use.
 
+You have three options for how to implement this challenge. Feel free to get creative and use the option that best suits your workflow. You can also combine options if you like.
+
+**Definition of Done**
+- Go to the gallery page after running the app locally.
+- Select "View Details" on a photo.
+- [] Pressing Escape closes the modal.
+- [] Clicking outside the modal content closes it.
+- [] The page cannot scroll while the modal is open.
+
 ### Option 1: Copilot
 
 Use inline suggestions to scaffold a few small UX improvements.
-
-**Goal:** Improve modal interactions in [GalleryGrid](../src/components/gallery/GalleryGrid.tsx).
-
-1. Open [GalleryGrid](../src/components/gallery/GalleryGrid.tsx).
-2. Add modal close behaviors:
-	- Pressing Escape closes the modal
-	- Clicking the dark backdrop closes the modal
-	- Clicking inside the modal content does not close it
-3. Lock page scroll while the modal is open and restore it when closed.
-4. Keep current modal content and layout unchanged.
-
-**Definition of Done**
-- Opening "View Details" shows the modal as it does now.
-- Pressing Escape closes the modal.
-- Clicking outside the modal content closes it.
-- Clicking inside the modal content keeps it open.
-- The page cannot scroll while the modal is open.
 
 **Features to use**
 - Inline suggestions
 - Next edit suggestions
 
+**Tips to complete:**
+
+1. Open [GalleryGrid](../src/components/gallery/GalleryGrid.tsx) and scan where `selectedPhoto` controls the modal open/close state.
+2. Add a short intent comment near the modal logic (for example: `// Close modal on Escape and disable page scroll while model is open`) on line 29 and pause for an inline suggestion before typing more. 
+
+> **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `useEffect(() => {` and pause for a suggestion._
+
+3. Find where the modal is rendered and add a short intent comment (for example: `{/* Close modal on backdrop click */}`) after `{/* Photo Detail Modal - Placeholder for future implementation */}` and pause for an inline suggestion before typing more.
+
+> **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `onClick={() => {` and pause for a suggestion.
+
+3. Implement one behavior at a time and use **Next Edit Suggestions** after each accepted change to jump to the next likely edit (Escape handling, then backdrop click, then scroll lock).
+5. Keep this challenge behavior-only: reject suggestions that change modal text, layout, or styling, then quickly test all 3 requirements after each accepted edit.
+
 ### Option 2: Copilot Chat
 
 Use Chat to plan and implement the exact same fix.
-
-Suggested prompt:
-
-```text
-In GalleryGrid.tsx, improve the photo detail modal UX:
-1) close on Escape,
-2) close on backdrop click,
-3) keep open when clicking inside modal content,
-4) disable page scroll while modal is open.
-Please keep the current UI and content unchanged.
-```
-
-Then ask Copilot Chat to:
-1. Explain the code changes in plain language.
-2. Point to where each rule is implemented.
-3. Suggest one small follow-up improvement.
 
 **Features to use**
 - Plan mode 
@@ -81,22 +60,44 @@ Then ask Copilot Chat to:
 - Model picker 
 - Auto model selection
 
-### Option 3: Copilot App
+**Tips to complete:**
 
-Use Copilot App to generate a task list and track completion.
+- Change agent to _Plan mode_ or _Agent mode_ 
+  - Use which ever mode you're most unfamiliar with to plan or implement the changes.
+- Use _'Auto model selection'_ to pick the best model for the task or a model you want to try out.
 
-Prompt idea:
+_Suggested prompt_
 
 ```text
-Create a small implementation checklist for improving modal UX in GalleryGrid.tsx:
-- close on Escape
-- close on backdrop click
-- prevent close on modal content click
-- lock body scroll while open
-- quick manual test plan
+In GalleryGrid.tsx, improve the photo detail modal UX:
+1) close on Escape,
+2) close on backdrop click,
+3) disable page scroll while modal is open.
+Please keep the current UI and content unchanged.
 ```
 
-Use the generated checklist while you implement the changes.
+### Option 3: Copilot App
+
+Use Copilot App! This is a new way to use Copilot that allows you to automate workflows, run multiple sessions across every area of work, and extend agents with your own tools. This is optional, so if you cannot download the app, you can still complete the challenge using Options 1 or 2.
+
+**Features to use**
+- [GitHub Copilot App](https://github.com/features/ai/github-app)
+
+**Tips to complete:**
+
+1. Open the GitHub Copilot App
+2. Select the `+` button on the right of `Sessions`
+3. Select `Local folder or repository...` and choose this repository
+4. Update the branch from `main` to your **current branch**
+5. Look over the options such as `Interactive`, `Plan`, and `Autopilot` to see which one you want to use for this challenge. You can also try out multiple options if you like.
+6. Use the suggested prompt from Option 2 to implement the changes in GalleryGrid.tsx.
+7. View change by selecting `Changes` on the bottom left of the chat
+8. Look over the other options in that panel. Select `Terminal` and run `npm run dev` to view the changes in your browser.
+9. `cmd + click` on the `http://localhost:3000` link to open the app directly in GitHub Copilot App.
+10. Once you are happy with the changes, click on the dropdown of `Create PR` on the top right to select `Create draft PR`.
+11. Click `Create draft PR` and view it on [GitHub](https://github.com/ps-copilot-sandbox/copilot-intermediate-gallery-repo/pulls) OR in the GitHub Copilot App by selecting `PR #` on the top right of the chat.
+
+Feel free to complete that PR to see the change in you current branch.
 
 ## 🎯 Challenge Two: Review your work
 

@@ -2,8 +2,6 @@
 
 Welcome to the GitHub Copilot customization challenge lab. This version is built around five advanced customization areas from awesome-copilot and uses this Photo Gallery repo for realistic tasks.
 
-This option is intentionally designed as a separate track from Option 1 with non-overlapping exercises.
-
 ## What You'll Learn
 By the end of this demo, you will:
 - [ ] Write and validate instruction-driven outputs
@@ -53,7 +51,7 @@ Source: https://awesome-copilot.github.com/instructions/
 1. Use this prompt:
 
 ```markdown
-Read project instructions and propose a hardening plan for UploadZone.
+Propose a hardening plan for UploadZone.
 Return exactly these sections:
 1) Constraints from instructions
 2) Proposed edits
@@ -62,8 +60,8 @@ Return exactly these sections:
 ```
 
 2. Run the same prompt twice:
-   - First with `/.github/copilot-instructions.md` included
-   - Then without it
+   - First without `/.github/copilot-instructions.md`
+   - Then with it
 
 3. Compare differences.
 

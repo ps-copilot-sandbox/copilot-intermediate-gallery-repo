@@ -14,23 +14,6 @@ By the end of this demo, you will:
 
 **Estimated Time:** 10-15 minutes
 
-## Core Method: The Context Packet
-
-Use this lightweight structure before implementation:
-
-1. **Rules**
-	- What must stay unchanged?
-	- What is out of scope?
-2. **Scope**
-	- Which file should be edited?
-	- Which files are optional only if strictly necessary?
-3. **Examples**
-	- Which existing file or pattern should the agent follow?
-4. **Validation**
-	- What exact behaviors must work when the task is done?
-
-This keeps the exercise aligned with context engineering principles: give the agent the right rules, the right patterns, and the right checks.
-
 ## Context Layers
 
 Good context engineering uses two layers:
@@ -178,24 +161,6 @@ Observe what happens:
 - Context attachments
 - Agent mode
 
-### Option 4: Team Exercise with Copilot App
-
-Use Copilot App to run this as a checklist-driven practice.
-
-Prompt idea:
-
-```text
-Create a context-engineering checklist for this task:
-- Start a new chat for a new topic
-- Check credits before implementation
-- Attach only task-relevant files
-- Build a context packet: rules, scope, examples, validation
-- Write a prompt with scope, requirements, constraints, done criteria
-- Check credits after implementation and compare
-```
-
-Use the checklist while implementing the modal behavior task.
-
 ## 🎯 Challenge Two: Compare outcomes and reflect
 
 After completing Challenge One, compare all three workflows.
@@ -239,19 +204,3 @@ Use these questions with the group:
 4. No validation: assuming the agent understood the task without checking behavior.
 
 ## 🚀 What's Next?
-
-Great work. You have completed the engineering practices context demo.
-
-👉 **[Start Features Demo](./features-demo-option-2.md)**
-
-"I am switching topics, so I am opening a new chat. I will check credits now, then again at the end. I am selecting only the gallery modal file for this task. My context packet includes explicit rules, scope, and validation so the agent can act with less guesswork and lower token usage."
-
-## Optional Follow-Up Exercise
-
-Run the same task again with one or two extra files attached that are unrelated, and compare:
-1. Turn count
-2. Diff size
-3. Credit usage
-4. Whether the extra context improved anything meaningful
-
-Use this to show that extra context often increases cost without increasing quality.
