@@ -39,7 +39,7 @@ Use inline suggestions to scaffold a few small UX improvements.
 **Tips to complete:**
 
 1. Open [GalleryGrid](../src/components/gallery/GalleryGrid.tsx) and scan where `selectedPhoto` controls the modal open/close state.
-2. Add a short intent comment near the modal logic (for example: `// Close modal on Escape and disable page scroll while model is open`) on line 29 and pause for an inline suggestion before typing more. 
+2. Add a short intent comment near the modal logic (for example: `// Close modal on Escape and disable page scroll while model is open`) on line 29 and pause for an inline suggestion before typing more.
 
 > **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `useEffect(() => {` and pause for a suggestion._
 
@@ -55,14 +55,14 @@ Use inline suggestions to scaffold a few small UX improvements.
 Use Chat to plan and implement the exact same fix.
 
 **Features to use**
-- Plan mode 
+- Plan mode
 - Agent mode
-- Model picker 
+- Model picker
 - Auto model selection
 
 **Tips to complete:**
 
-- Change agent to _Plan mode_ or _Agent mode_ 
+- Change agent to _Plan mode_ or _Agent mode_
   - Use which ever mode you're most unfamiliar with to plan or implement the changes.
 - Use _'Auto model selection'_ to pick the best model for the task or a model you want to try out.
 

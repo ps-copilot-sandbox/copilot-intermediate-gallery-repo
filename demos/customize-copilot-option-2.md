@@ -14,9 +14,9 @@ By the end of this demo, you will:
 
 ## Reference Pages
 
-- Instructions: https://awesome-copilot.github.com/instructions/
-- Agents: https://awesome-copilot.github.com/agents/
-- Skills: https://awesome-copilot.github.com/skills/
+- [Instructions](https://awesome-copilot.github.com/instructions/)
+- [Agents](https://awesome-copilot.github.com/agents/)
+- [Skills](https://awesome-copilot.github.com/skills/)
 
 ---
 
@@ -24,7 +24,7 @@ By the end of this demo, you will:
 
 **Goal:** prove that instruction quality changes output quality.
 
-**Source:** https://awesome-copilot.github.com/instructions/
+**Source:** [Instructions](https://awesome-copilot.github.com/instructions/)
 
 1. Use this prompt:
 
@@ -63,10 +63,10 @@ Return exactly these sections:
 
 **Goal:** use agent specialization to improve planning quality.
 
-**Source:** https://awesome-copilot.github.com/agents/
+**Source:** [Agents](https://awesome-copilot.github.com/agents/)
 
 1. Switch to **Blueprint Mode** from awesome-copilot agents in Copilot chat. This mode is designed for planning and architecture tasks.
-2. Review the Blueprint Mode markdown template in `/.github/agents/blueprint-mode.md` to understand the expected output structure. 
+2. Review the Blueprint Mode markdown template in `/.github/agents/blueprint-mode.md` to understand the expected output structure.
 3. Use this prompt:
 
 ```markdown
@@ -80,10 +80,10 @@ Include architecture decisions, guardrails, and a test matrix.
 
 4. Switch to default Agent mode and run the same prompt.
 5. Compare depth, structure, and implementation readiness.
-  - Specifically, look for:
-    - Implementation details. Are they feasible and well-explained?
-    - Structure. Is the output organized into clear sections?
-    - Missing assumptions. Are there any gaps in the proposed solution?
+- Specifically, look for:
+  - Implementation details. Are they feasible and well-explained?
+  - Structure. Is the output organized into clear sections?
+  - Missing assumptions. Are there any gaps in the proposed solution?
 
 ---
 
@@ -91,11 +91,11 @@ Include architecture decisions, guardrails, and a test matrix.
 
 **Goal:** run an awesome-copilot skill in a unique test-engineering workflow.
 
-**Source:** https://awesome-copilot.github.com/skills/
+**Source:** [Skills](https://awesome-copilot.github.com/skills/)
 
 Skill used in this challenge: **javascript-typescript-jest**
 
-Skill reference: https://github.com/github/awesome-copilot/tree/main/skills/javascript-typescript-jest
+Skill reference: [javascript-typescript-jest](https://github.com/github/awesome-copilot/tree/main/skills/javascript-typescript-jest)
 
 1. Navigate to `.github/skills/javascript-typescript-jest/SKILL.md`
 2. Review the shared skill instructions for safety and fit with your repo conventions.
