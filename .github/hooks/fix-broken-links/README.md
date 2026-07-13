@@ -158,7 +158,7 @@ hook stops after the broken-link list — the menu above is skipped.
 
 ## File Structure
 
-```
+```markdown
 .github/hooks/fix-broken-links/
 ├── hooks.json      GitHub Copilot hook configuration
 ├── link-fix.sh     Bash hook implementation
