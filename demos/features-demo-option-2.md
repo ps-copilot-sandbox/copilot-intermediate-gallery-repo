@@ -43,7 +43,7 @@ Use inline suggestions to scaffold a few small UX improvements.
 
 > **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `useEffect(() => {` and pause for a suggestion._
 
-3. Find where the modal is rendered and add a short intent comment (for example: `{/* Close modal on backdrop click */}`) after `{/* Photo Detail Modal - Placeholder for future implementation */}` and pause for an inline suggestion before typing more.
+3. Find where the modal is rendered and add a short intent comment (for example: add comment `{/* Close modal on backdrop click */}`) in the empty space after `{/* Photo Detail Modal - Placeholder for future implementation */}` and pause for an inline suggestion before typing more.
 
 > **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `onClick={() => {` and pause for a suggestion.
 
@@ -107,14 +107,16 @@ Feel free to complete that PR to see the change in you current branch.
 ### Option 1: Inline AI-Powered Review
 
 1. **Select generated code:** Highlight the code that was created
-2. **Open Copilot menu:** Right-click → Select "Copilot"
-3. **Get review:** Choose "Review and Comment"
+2. **Get review** Right-click → Select "Review"
 4. **Process feedback:** Review suggestions and accept/discard as needed
 
 ### Option 2: Source Code AI-Powered Review
 
 1. **Select Source Control in the Activity Bar:** Click the Source Control icon in the left sidebar to open the source control panel.
-2. **Start review:** At the top of the Source Control view, hover over CHANGES, then click the  Copilot Code Review - Uncommitted Changes button.
+2. **Start review:** At the top of the Source Control view, hover over CHANGES, then click the `Code Review - Unstaged Changes` button. _See image below for reference_
+
+![Code review button](/demos/images/code-review.png)
+
 3. **View comments:** If Copilot has any comments, they will be shown inline in your file(s), and in the Problems tab.
 
 ## ✅ Completion Checklist

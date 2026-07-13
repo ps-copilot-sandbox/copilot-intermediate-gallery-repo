@@ -143,14 +143,16 @@ Fix pagination in GalleryGrid.tsx: Change startIndex from 0 to (currentPage - 1)
 ### Option A: Inline AI-Powered Review
 
 1. **Select generated code:** Highlight the code that was created
-2. **Open Copilot menu:** Right-click → Select "Copilot"
-3. **Get review:** Choose "Review and Comment"
+2. **Get review** Right-click → Select "Review"
 4. **Process feedback:** Review suggestions and accept/discard as needed
 
 ### Option B: Source Code AI-Powered Review
 
 1. **Select Source Control in the Activity Bar:** Click the Source Control icon in the left sidebar to open the source control panel.
-2. **Start review:** At the top of the Source Control view, hover over CHANGES, then click the  Copilot Code Review - Uncommitted Changes button.
+2. **Start review:** At the top of the Source Control view, hover over CHANGES, then click the `Code Review - Unstaged Changes` button. _See image below for reference_
+
+![Code review button](/demos/images/code-review.png)
+
 3. **View comments:** If Copilot has any comments, they will be shown inline in your file(s), and in the Problems tab.
 
 ### Option C: Manual Review
