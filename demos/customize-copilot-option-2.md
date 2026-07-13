@@ -7,6 +7,7 @@ By the end of this demo, you will:
 - [ ] Write and validate instruction-driven outputs
 - [ ] Use agent modes to produce role-specific outcomes
 - [ ] Apply skills-style workflows with clear triggers and deliverables
+- [ ] Use hooks identify broken links
 
 **Estimated Time:** 25-30 minutes
 
@@ -17,6 +18,7 @@ By the end of this demo, you will:
 - [Instructions](https://awesome-copilot.github.com/instructions/)
 - [Agents](https://awesome-copilot.github.com/agents/)
 - [Skills](https://awesome-copilot.github.com/skills/)
+- [Hooks](https://awesome-copilot.github.com/hooks/)
 
 ---
 
@@ -124,6 +126,29 @@ Then provide a "test maintenance checklist" for future UI changes.
 
 ---
 
+## 🪝 Challenge 4: Hooks
+
+**Goal:** use a hook to identify broken links in a markdown file.
+
+**Source:** [Hooks](https://awesome-copilot.github.com/hooks/)
+
+Hook used in this challenge: **Fix Broken Links**
+
+**Prerequisites:** [Fix Broken Links Hook Requirements](https://github.com/github/awesome-copilot/blob/main/hooks/fix-broken-links/README.md#requirements)
+
+1. View and review the Fix Broken Links hook in `.github/hooks/fix-broken-links/`
+2. Make the script executable with `chmod +x .github/hooks/fix-broken-links/link-fix.sh`
+3. Run the hook with `bash .github/hooks/fix-broken-links/link-fix.sh ./demos/customize-copilot-option-2.md` in your terminal.
+4. Observe the output and confirm that it identifies broken links in this document. Decide if you want to remove the broken link, custom replace it with a valid link, or skip it.
+
+**Broken Link**
+```markdown
+- An HTML anchor:
+  <a href="https://github.com/github/awesome-copilot/this-page-does-not-exist-404">read more</a>
+```
+
+---
+
 ## ✅ Completion Checklist
 
 Mark off each item as you complete it:
@@ -131,3 +156,4 @@ Mark off each item as you complete it:
 - [ ] Completed the Instructions challenge and captured before/after quality differences
 - [ ] Completed the Agents challenge and compared mode behavior
 - [ ] Completed the Skills challenge with a repeatable trigger workflow
+- [ ] Completed the Hooks challenge and confirmed the broken link detection
