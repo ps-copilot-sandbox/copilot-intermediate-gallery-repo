@@ -22,11 +22,14 @@ Before starting, here are some quick reminders for context engineering.
 Good context engineering uses two layers:
 
 1. **Project-wide context**
-  - Stable guidance such as repo instructions, architecture notes, and contributor rules
-  - Best for conventions the agent should know across many tasks
+
+- Stable guidance such as repo instructions, architecture notes, and contributor rules
+- Best for conventions the agent should know across many tasks
+
 2. **Task-specific context**
-  - The selected files, scope, constraints, examples, and validation for one task
-  - Best for keeping the current chat focused and cheap
+
+- The selected files, scope, constraints, examples, and validation for one task
+- Best for keeping the current chat focused and cheap
 
 For this exercise, focus mostly on task-specific context. For larger work, combine both layers.
 
