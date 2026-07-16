@@ -95,12 +95,13 @@ Observe what happens:
 Run this second to show how context overload degrades results.
 
 1. Continue in the same chat from Bad habit 1.
-2. Attach the target file plus several loosely related files.
-- Suggested extras:
-  - [upload page](../src/app/upload/page.tsx)
-  - [gallery page](../src/app/gallery/page.tsx)
-  - [GalleryGrid](../src/components/gallery/GalleryGrid.tsx)
-  - [Demo markdown file](../demos/features-demo.md)
+2. Attach the target file plus several loosely related files. Suggested extras:
+
+- [Upload page](../src/app/upload/page.tsx)
+- [Gallery page](../src/app/gallery/page.tsx)
+- [GalleryGrid](../src/components/gallery/GalleryGrid.tsx)
+- [Demo markdown file](../demos/features-demo.md)
+
 3. Keep prompt requirements broad and avoid explicit scope boundaries.
 
 Prompt example:
