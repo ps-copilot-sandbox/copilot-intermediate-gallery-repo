@@ -24,9 +24,9 @@ You have three options for how to implement this challenge. Feel free to get cre
 **Definition of Done**
 - Go to the gallery page after running the app locally.
 - Select "View Details" on a photo.
-- [] Pressing Escape closes the modal.
-- [] Clicking outside the modal content closes it.
-- [] The page cannot scroll while the modal is open.
+  - [ ] Press Escape closes the modal.
+  - [ ] Click outside the modal content closes it.
+  - [ ] The page cannot scroll while the modal is open.
 
 ### Option 1: Copilot
 
@@ -39,7 +39,7 @@ Use inline suggestions to scaffold a few small UX improvements.
 **Tips to complete:**
 
 1. Open [GalleryGrid](../src/components/gallery/GalleryGrid.tsx) and scan where `selectedPhoto` controls the modal open/close state.
-2. Add a short intent comment near the modal logic (for example: `// Close modal on Escape and disable page scroll while model is open`) on line 29 and pause for an inline suggestion before typing more.
+2. Add a short intent comment near the modal logic (for example: `// Close modal on Escape and disable page scroll while modal is open`) on line 29 and pause for an inline suggestion before typing more.
 
 > **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `useEffect(() => {` and pause for a suggestion._
 
@@ -47,7 +47,7 @@ Use inline suggestions to scaffold a few small UX improvements.
 
 > **_NOTE_** If it doesn't appear, try typing a few more words or pressing Enter to trigger it. like `onClick={() => {` and pause for a suggestion.
 
-3. Implement one behavior at a time and use **Next Edit Suggestions** after each accepted change to jump to the next likely edit (Escape handling, then backdrop click, then scroll lock).
+4. Implement one behavior at a time and use **Next Edit Suggestions** after each accepted change to jump to the next likely edit (Escape handling, then backdrop click, then scroll lock).
 5. Keep this challenge behavior-only: reject suggestions that change modal text, layout, or styling, then quickly test all 3 requirements after each accepted edit.
 
 ### Option 2: Copilot Chat
@@ -63,7 +63,7 @@ Use Chat to plan and implement the exact same fix.
 **Tips to complete:**
 
 - Change agent to _Plan mode_ or _Agent mode_
-  - Use which ever mode you're most unfamiliar with to plan or implement the changes.
+  - Use whichever mode you're most unfamiliar with to plan or implement the changes.
 - Use _'Auto model selection'_ to pick the best model for the task or a model you want to try out.
 
 _Suggested prompt_

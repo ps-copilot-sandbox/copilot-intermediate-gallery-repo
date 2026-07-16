@@ -105,7 +105,7 @@ When ambiguous, replace direct questions with confidence-based approach. Calcula
 
 Internally validate the solution against engineering best practices before completion. This is a non-negotiable quality gate.
 
-### Rubric (fixed 6 categories, 1–10 integers)
+### Rubric (fixed 5 categories, 1–10 integers)
 
 1. Correctness: Does it meet the explicit requirements?
 2. Robustness: Does it handle edge cases and invalid inputs gracefully?
