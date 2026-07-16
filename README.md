@@ -25,10 +25,6 @@ Original guides:
 - [Copilot Spaces Demo](demos/copilot-spaces.md)
 - [Cloud Agent Demo](demos/cloud-agent.md)
 
-Additional demo:
-
-- [GitHub Copilot CLI Demo](demos/copilot-cli.md)
-
 ### Creating a New Demo
 
 If you want to contribute and create a new demo, follow these steps:
