@@ -18,7 +18,7 @@ By the end of this demo, you will:
 - [Instructions](https://awesome-copilot.github.com/instructions/)
 - [Agents](https://awesome-copilot.github.com/agents/)
 - [Skills](https://awesome-copilot.github.com/skills/)
-- [Hooks](https://awesome-copilot.github.com/hooks/)
+- [Hooks](https://github.com/github/awesome-copilot/tree/main/hooks)
 
 ---
 
@@ -138,7 +138,7 @@ Hook used in this challenge: **Fix Broken Links**
 
 1. View and review the Fix Broken Links hook in `.github/hooks/fix-broken-links/`
 2. Make the script executable with `chmod +x .github/hooks/fix-broken-links/link-fix.sh` OR `chmod +x .github/hooks/fix-broken-links/link-fix.ps1` depending on your preferred shell.
-3. Run the hook with `bash .github/hooks/fix-broken-links/link-fix.sh ./demos/customize-copilot-option-2.md` in your terminal. If you are using PowerShell, use the .ps1 script and the corresponding command instead.
+3. Run the hook with `bash .github/hooks/fix-broken-links/link-fix.sh ./demos/customize-copilot-option-2.md` in your terminal. If you are using PowerShell, use the .ps1 script.
 4. Observe the output and confirm that it identifies broken links in this document. Decide if you want to remove the broken link, custom replace it with a valid link, or skip it.
 
 **Broken Link**
