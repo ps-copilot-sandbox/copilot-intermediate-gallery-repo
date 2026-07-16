@@ -4,7 +4,7 @@
 
 ## What You'll Learn
 By the end of this demo, you will:
-- [ ] Use `/chronicle standup` to generate a 24-hour activity report
+- [ ] Use `/chronicle standup` to generate an activity report for the last 5 days
 - [ ] Create a feature issue using Copilot's `/create-issue` slash command
 - [ ] Review Copilot-generated pull requests and session details
 
@@ -41,7 +41,7 @@ By the end of this demo, you will:
 ## 📚 Step 3: Review Copilot's Changes
 
 1. Scroll to the _Selected Agent_ `linked a pull request that will close this issue` and click the link to view the PR.
-2. Review the session details in the [agents tab](https://github.com/copilot-co/copilot-intermediate-gallery-repo/agents) to see how Copilot implemented the feature.
+2. Review the session details in the [agents tab](https://github.com/ps-copilot-sandbox/copilot-intermediate-gallery-repo/agents) to see how Copilot implemented the feature.
 3. Go to the PR and review the file changes made by Copilot.
 
 _If time permits, open the PR in GitHub Copilot app and test out the changes made by Copilot._
@@ -50,7 +50,7 @@ _If time permits, open the PR in GitHub Copilot app and test out the changes mad
 
 Mark each item as you complete it:
 
-- [ ] Ran `/chronicle standup` and reviewed the 24-hour report
+- [ ] Ran `/chronicle standup` and reviewed the activity report for the last 5 days
 - [ ] Created a feature issue using `/create-issue`
 - [ ] Assigned Copilot to the new issue
 - [ ] Viewed Copilot's session
