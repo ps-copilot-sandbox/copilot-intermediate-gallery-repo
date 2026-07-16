@@ -16,7 +16,7 @@
 # Covers: HTML · Markdown · JS/TS · JSON · CSS · SQL · templates (all via URL scan)
 # Trigger: postToolUse
 
-Set-StrictMode -Version 3.0
+Set-StrictMode -Off
 $ProgressPreference = 'SilentlyContinue'   # Invoke-WebRequest is far faster without the bar
 
 # The agent hand-off below invokes `copilot`, which may itself re-fire this hook.
