@@ -49,7 +49,7 @@ Collaborate in dedicated Copilot Spaces. Create a Space, set goals, add context 
 
 ---
 
-### 5. Cloud Agent Demo ([coding-agent.md](coding-agent.md))
+### 5. Cloud Agent Demo ([cloud-agent.md](cloud-agent.md))
 **Overview:**  
 Experience GitHub Copilot as a cloud agent to accelerate building and enhancing features in your Photo Gallery & Portfolio application.  
 **Key Skills:**  
