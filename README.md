@@ -8,12 +8,29 @@ A professional photo gallery and portfolio application built with Next.js 15, Ty
 - For more information about each demo, refer to the [README](demos/README.md) file in the `demos/` directory.
 - To get started, check out the first demo [`features-demo.md`](demos/features-demo.md) for a walkthrough of gallery features and Copilot capabilities.
 
+### Demo Tracks
+
+Latest recommended guides (Option 2):
+
+- [Features Demo (Option 2)](demos/features-demo-option-2.md)
+- [Engineering Practices Demo (Option 2)](demos/engineering-practices-option-2.md)
+- [Customize Copilot Demo (Option 2)](demos/customize-copilot-option-2.md)
+- [Cloud Agent Demo (Option 2)](demos/cloud-agent-option-2.md)
+
+Original guides:
+
+- [Features Demo](demos/features-demo.md)
+- [Engineering Practices Demo](demos/engineering-practices.md)
+- [Customize Copilot Demo](demos/customize-copilot.md)
+- [Copilot Spaces Demo](demos/copilot-spaces.md)
+- [Cloud Agent Demo](demos/cloud-agent.md)
+
 ### Creating a New Demo
 
 If you want to contribute and create a new demo, follow these steps:
 
 1. Open GitHub Copilot Chat.
-2. Type the prompt `/create-copilot-demo' with an explanation of your demo idea
+2. Type the prompt `/create-copilot-demo` with an explanation of your demo idea.
 3. Copilot will generate a new demo file in the `demos/` directory.
 4. Fill in remaining sections with detailed instructions, examples, and expected results.
 
