@@ -4,7 +4,7 @@ Welcome to the GitHub Copilot customization demo! Here you'll learn how to tailo
 
 ## What You'll Learn
 By the end of this demo, you will:
-- [ ] Know how to monitor your premium request usage
+- [ ] Know how to monitor your AI credit usage
 - [ ] Switch between AI models in Chat and Code completions (OPTIONAL)
 - [ ] Use prompt files for consistent AI interactions
 - [ ] Utilize custom agent modes for various development tasks
@@ -14,9 +14,7 @@ By the end of this demo, you will:
 
 ---
 
-## 📊 Step 1: Monitor Premium Request
-
-### Option A: Access the Premium Dashboard
+## 📊 Step 1: Monitor AI Credit Usage
 
 In IDE:
 
@@ -29,9 +27,9 @@ In github.com:
 
 1. **Navigate to GitHub:** Go to [https://github.com/settings/copilot/features](https://github.com/settings/copilot/features)
 2. **Sign in:** Ensure you're logged into your GitHub account
-3. **View dashboard:** Review your premium request usage percentage and limits
+3. **View dashboard:** Review your AI credit usage percentage and limits
 
-View premium request percentage to understand how many requests you have left.
+View AI credit percentage to understand how many requests you have left.
 
 ---
 
@@ -190,7 +188,7 @@ create an issue for this repo for a feature request to toggle between dark mode 
 
 Mark off each item as you complete it:
 
-- [ ] Explored premium request monitoring and identified usage patterns
+- [ ] Explored AI credit usage and identified usage patterns
 - [ ] Practiced model switching techniques
 - [ ] Used project-specific prompt file
 - [ ] Experimented with different custom agent modes

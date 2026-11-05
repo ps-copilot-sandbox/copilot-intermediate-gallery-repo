@@ -93,33 +93,6 @@ GitHub.com provides additional tools for managing Copilot at the organizational 
 
 ---
 
-### 🤝 Step 4: Manage Shared Conversations
-
-**Why this matters:** Shared conversations create a knowledge base of effective AI interactions that your entire team can learn from and build upon.
-
-#### Share a Conversation
-1. **Navigate to GitHub Copilot:** Go to [https://github.com/copilot](https://github.com/copilot)
-2. **Start a chat:** Start a conversation. In the chat window, type the following prompt:
-   ```markdown
-   What are the advantages of the Go programming language?
-   ```
-3. **Share the conversation:** Click the **"Share"** button at the top-right of the chat window
-4. **Select share:** Select share and copy the link to share with your team
-
-#### View Shared Conversation
-1. **Navigate to GitHub Copilot:** Go to [https://github.com/copilot](https://github.com/copilot)
-2. **Access sharing options:** Click on your user icon on the bottom-left corner
-3. **Open conversation management:** Select **"Manage shared conversations"**
-
-#### What to Explore with Shared Conversations
-- **Shared Conversations:** Browse conversations shared by your team
-- **Categories:** See how conversations are organized by topic
-- **Usage Patterns:** Notice which types of conversations are shared most often
-
-**💼 Best Practices for Sharing:**
-- Share conversations that solved complex problems
-- Include context about when and why certain approaches work
-- Tag conversations with relevant keywords for easy discovery
 
 ## 🚀 What's Next?
 

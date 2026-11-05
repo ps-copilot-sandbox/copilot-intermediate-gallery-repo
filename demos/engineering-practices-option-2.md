@@ -6,7 +6,7 @@ The goal is to show that the best results usually come from minimal sufficient c
 
 ## What You'll Learn
 By the end of this demo, you will:
-- [ ] Track credit usage
+- [ ] Track AI credit usage
 - [ ] Know when to start a new chat for a new topic
 - [ ] Select files based on task scope
 - [ ] Compare outcomes between bad and recommended context setup practices
@@ -45,18 +45,18 @@ For larger tasks, separate the phases:
 
 This reduces context mixing and keeps each phase easier for the agent to follow.
 
-## 🎯 Challenge One: Locate credit usage
+## 🎯 Challenge One: Locate AI credit usage
 
 1. Open Copilot Chat in VS Code
 2. Hover over an existing chat suggestion
 3. Two items will appear on the bottom right of the suggestion:
    - **Model used**: The model that generated the suggestion
-   - **Credits used**: The number of credits used to generate the suggestion
+   - **AI credits used**: The number of AI credits used to generate the suggestion
 
 **Example image:**
 ![Copilot Chat usage](/demos/images/credit-usage.png)
 
-We will be reviewing the credits in the next challenge, so make sure you know how to locate them.
+We will be reviewing AI credit usage in the next challenge, so make sure you know how to locate it.
 
 ## 📝 Challenge Two: Context engineering
 
@@ -142,7 +142,7 @@ Suggested prompt:
 Implement tag autocomplete for the Upload page tags input. For example, typing "w" should suggest "wedding" and "wildlife". Create a new file in the components/upload folder for the autocomplete input if needed.
 ```
 
-3. After implementation, check credits again and compare to the two bad-habit runs.
+3. After implementation, check AI credits again and compare to the two bad-habit runs.
 
 ### Recommended practice 2: Research, plan, and implement in separate chats
 
@@ -184,7 +184,7 @@ After completing Challenge Two, compare all four habit-based runs.
 Use these questions with the group:
 1. Which run was more predictable?
 2. Which run took fewer turns?
-3. Which run used fewer credits?
+3. Which run used fewer AI credits?
 4. Which run produced the smallest correct diff?
 
 ## ✅ Key practices to keep

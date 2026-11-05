@@ -29,9 +29,10 @@ Dive deeper into professional Copilot tools for teams. Inspect Copilot’s decis
 
 ### 3. Customize Copilot Demo ([customize-copilot.md](customize-copilot.md))
 **Overview:**  
-Learn advanced customization techniques. Monitor premium usage, switch models, use prompt files, experiment with custom agent modes, and set up custom instructions for your team.  
+Learn advanced customization techniques. Monitor AI credit usage, switch models, use prompt files, experiment with custom agent modes, and set up custom instructions for your team.
+
 **Key Skills:**  
-- Track Copilot premium usage  
+- Track AI credit usage in Copilot
 - Switch between AI models  
 - Create and use prompt files  
 - Utilize custom agent modes, custom instructions, and MCP servers
