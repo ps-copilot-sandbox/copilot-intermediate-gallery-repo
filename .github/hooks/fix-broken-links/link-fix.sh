@@ -14,7 +14,7 @@
 # Pure bash + grep/sed/curl, plus an optional Copilot CLI hand-off for suggestions.
 # Covers: HTML · Markdown · JS/TS · JSON · CSS · SQL · templates (all via URL scan)
 # Requires: curl, grep, sed  |  Optional: copilot  |  Trigger: postToolUse
-set -uo pipefail
+set -o pipefail
 
 # The agent hand-off below invokes `copilot`, which may itself re-fire this hook.
 # The child run is marked with this env var; exit immediately if it is present so
@@ -45,7 +45,10 @@ if [ "$#" -eq 0 ] && [ ! -t 0 ]; then
     case "$_TOOL" in
       editFiles|edit|write|str_replace_editor|create_file|multiEdit|applyPatch)
         # Only the files this edit tool just changed - never a wider repo scan.
-        mapfile -t _FILES < <(
+        _FILES=()
+        while IFS= read -r _FILE; do
+          [ -n "$_FILE" ] && _FILES+=("$_FILE")
+        done < <(
           printf '%s' "$_INPUT" \
             | jq -r '.tool_input.files[]? // .toolInput.files[]? // .tool_input.path // .toolInput.path // empty' 2>/dev/null
         )
@@ -67,6 +70,7 @@ fi
 # the full repair flow (look up alternatives, then prompt to fix). With no
 # parameters we simply list the broken links - no lookups, no prompts.
 [ "$#" -gt 0 ] && HAVE_PARAMS=1 || HAVE_PARAMS=0
+[ "${FIX_BROKEN_LINKS_REPORT_ONLY:-}" = "1" ] && HAVE_PARAMS=0
 
 # Interactive input comes from the terminal, since stdin may carry hook JSON.
 # Probe by actually opening /dev/tty - a mere -r/-w test can pass where open fails.
@@ -82,6 +86,15 @@ ask() {
   printf '%s' "$p" > "$TTY"
   IFS= read -r ans < "$TTY" || ans=""
   printf '%s' "$ans"
+}
+
+array_contains() {
+  local needle="$1" item
+  shift
+  for item in "$@"; do
+    [ "$item" = "$needle" ] && return 0
+  done
+  return 1
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -268,15 +281,15 @@ collect_input() {
     -o -type f -print 2>/dev/null
 }
 
-declare -A SEEN
+SEEN=()
 FILES=()
 while IFS= read -r f; do
   [ -z "$f" ] && continue
   [ -f "$f" ] || continue
   case "$f" in */node_modules/*|*/.git/*|*/dist/*|*/build/*) continue ;; esac
   printf '%s\n' "$f" | grep -qiE "$WEB_RE" || continue
-  [ -n "${SEEN[$f]:-}" ] && continue
-  SEEN[$f]=1
+  array_contains "$f" "${SEEN[@]}" && continue
+  SEEN+=("$f")
   FILES+=("$f")
 done < <(collect_input "$@")
 
@@ -292,7 +305,10 @@ for file in "${FILES[@]}"; do
     [ -n "$line" ] && SEO_LINES+=("$file: $line")
   done < <(seo_scan "$file")
 
-  mapfile -t urls < <(extract_urls "$file")
+  urls=()
+  while IFS= read -r url; do
+    [ -n "$url" ] && urls+=("$url")
+  done < <(extract_urls "$file")
   [ "${#urls[@]}" -eq 0 ] && continue
 
   if [ "$HAVE_PARAMS" = "1" ] && [ "${#urls[@]}" -gt "$LIMIT" ]; then
@@ -328,7 +344,7 @@ fi
 
 printf '\n%s\n  fix-broken-links report\n%s\n' "============================================================" "============================================================"
 
-declare -A CHANGED
+CHANGED=()
 n="${#B_URL[@]}"
 for ((i=0; i<n; i++)); do
   file="${B_FILE[$i]}"; url="${B_URL[$i]}"; status="${B_STATUS[$i]}"
@@ -340,7 +356,12 @@ for ((i=0; i<n; i++)); do
   # No file parameters → report-only: list the broken link and move on.
   [ "$HAVE_PARAMS" = "1" ] || continue
 
-  alts=(); [ -n "${B_ALT[$i]}" ] && mapfile -t alts <<< "${B_ALT[$i]}"
+  alts=()
+  if [ -n "${B_ALT[$i]}" ]; then
+    while IFS= read -r alt; do
+      [ -n "$alt" ] && alts+=("$alt")
+    done <<< "${B_ALT[$i]}"
+  fi
   printf '\n'
   if [ "${#alts[@]}" -gt 0 ]; then
     printf '    r  Replace -> %s\n' "${alts[0]}"
@@ -361,24 +382,24 @@ for ((i=0; i<n; i++)); do
     ch="$(ask '  > ')"
     case "$ch" in
       s|"") break ;;
-      d) remove_link "$file" "$url"; CHANGED[$file]=1; printf '    removed\n'; break ;;
+      d) remove_link "$file" "$url"; array_contains "$file" "${CHANGED[@]}" || CHANGED+=("$file"); printf '    removed\n'; break ;;
       r) if [ "${#alts[@]}" -gt 0 ]; then
-           replace_url "$file" "$url" "${alts[0]}"; CHANGED[$file]=1; printf '    replaced -> %s\n' "${alts[0]}"; break
+          replace_url "$file" "$url" "${alts[0]}"; array_contains "$file" "${CHANGED[@]}" || CHANGED+=("$file"); printf '    replaced -> %s\n' "${alts[0]}"; break
          fi
          printf '    no suggestion available\n' ;;
       [1-9]) if [ "$ch" -lt "${#alts[@]}" ]; then
-               replace_url "$file" "$url" "${alts[$ch]}"; CHANGED[$file]=1; printf '    replaced -> %s\n' "${alts[$ch]}"; break
+            replace_url "$file" "$url" "${alts[$ch]}"; array_contains "$file" "${CHANGED[@]}" || CHANGED+=("$file"); printf '    replaced -> %s\n' "${alts[$ch]}"; break
              else printf '    invalid choice\n'; fi ;;
       c) u="$(ask '  URL: ')"
-         if [ -n "$u" ]; then replace_url "$file" "$url" "$u"; CHANGED[$file]=1; printf '    replaced\n'; break; fi ;;
+        if [ -n "$u" ]; then replace_url "$file" "$url" "$u"; array_contains "$file" "${CHANGED[@]}" || CHANGED+=("$file"); printf '    replaced\n'; break; fi ;;
       *) printf '    invalid choice\n' ;;
     esac
   done
 done
 
-if [ "${CHANGED[*]+x}" = x ] && [ "${#CHANGED[@]}" -gt 0 ]; then
+if [ "${#CHANGED[@]}" -gt 0 ]; then
   printf '\n  %d file(s) updated:\n' "${#CHANGED[@]}"
-  for f in "${!CHANGED[@]}"; do printf '    %s\n' "$f"; done
+  for f in "${CHANGED[@]}"; do printf '    %s\n' "$f"; done
   printf '\n'
 fi
 exit 0

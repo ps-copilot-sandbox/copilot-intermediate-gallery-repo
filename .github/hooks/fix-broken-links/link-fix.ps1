@@ -68,6 +68,7 @@ if ($ScriptArgs.Count -eq 0 -and [Console]::IsInputRedirected) {
 # the full repair flow (look up alternatives, then prompt to fix). With no
 # parameters we simply list the broken links - no lookups, no prompts.
 $HaveParams = $ScriptArgs.Count -gt 0
+if ($env:FIX_BROKEN_LINKS_REPORT_ONLY -eq '1') { $HaveParams = $false }
 
 # Interactive prompts are only possible when input is a real console; once the
 # hook JSON has been read from a redirected stdin we report rather than prompt.

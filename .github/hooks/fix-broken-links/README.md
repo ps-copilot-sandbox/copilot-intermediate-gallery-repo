@@ -82,6 +82,15 @@ The hook is configured in `hooks.json` to run on the `postToolUse` event:
 }
 ```
 
+For CI, scripted checks, and non-interactive demos, set
+`FIX_BROKEN_LINKS_REPORT_ONLY=1`. The hook still checks explicitly passed or
+payload-discovered files, but skips replacement lookups and interactive fixes:
+
+```bash
+FIX_BROKEN_LINKS_REPORT_ONLY=1 \
+  .github/hooks/fix-broken-links/link-fix.sh docs/guide.md
+```
+
 ## Supported Source Types
 
 Links are found by scanning each file for `http(s)://` URLs, so the same logic
@@ -150,7 +159,8 @@ hook stops after the broken-link list — the menu above is skipped.
 - `curl` — HTTP status checks (the hook exits quietly if absent)
 - `grep`, `sed` — link extraction (standard on any POSIX system)
 - `jq` — required by the bash hook to parse the postToolUse JSON payload and discover edited files
-- Bash 4+ (for `link-fix.sh`); on Windows use Git Bash or WSL, or run the PowerShell 7+ port
+- Bash 3.2+ (for `link-fix.sh`, including the default macOS Bash); on Windows use Git Bash or WSL,
+ or run the PowerShell 7+ port
  `link-fix.ps1`
 - `copilot` (GitHub Copilot CLI) — optional; powers the agent-suggested replacements. Without it,
  only verified spelling variations are offered
