@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Search, Filter, Grid, List, ChevronDown, X } from "lucide-react";
-import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { GalleryGrid, type SortOption } from "@/components/gallery/GalleryGrid";
 import { Hero, SectionContainer, SectionTitle } from "@/components/ui";
 import { AVAILABLE_TAGS } from "@/lib/mock-tag-data";
 
@@ -12,6 +12,7 @@ export default function GalleryPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<SortOption>('newest');
   const filterRef = useRef<HTMLDivElement>(null);
 
   // Close filter dropdown when clicking outside
@@ -58,6 +59,11 @@ export default function GalleryPage() {
     setSearchQuery(query);
     setCurrentPage(1);
   };
+
+  const handleSortChange = (value: SortOption) => {
+    setSortBy(value);
+    setCurrentPage(1);
+  };
   return (
     <div className="page-gradient">
       <Hero 
@@ -86,6 +92,16 @@ export default function GalleryPage() {
 
             {/* Filter Controls */}
             <div className="flex items-center gap-4">
+              <select
+                value={sortBy}
+                onChange={(e) => handleSortChange(e.target.value as SortOption)}
+                className="form-select w-auto"
+                aria-label="Sort photos"
+              >
+                <option value="newest">Newest</option>
+                <option value="likes">Most Liked</option>
+                <option value="views">Most Viewed</option>
+              </select>
               <div className="relative" ref={filterRef}>
                 <button 
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -190,6 +206,7 @@ export default function GalleryPage() {
           isLoading={isLoading}
           selectedTags={selectedTags}
           searchQuery={searchQuery}
+          sortBy={sortBy}
         />
       </SectionContainer>
     </div>

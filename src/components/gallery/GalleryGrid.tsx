@@ -5,6 +5,8 @@ import { Heart, Download, Share2, Eye, Tag } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Photo, mockPhotos } from '@/lib/mock-photo-data';
 
+export type SortOption = 'newest' | 'likes' | 'views';
+
 interface GalleryGridProps {
   limit?: number;
   className?: string;
@@ -13,6 +15,7 @@ interface GalleryGridProps {
   selectedTags?: string[];
   searchQuery?: string;
   currentPage?: number;
+  sortBy?: SortOption;
 }
 
 export function GalleryGrid({ 
@@ -22,7 +25,8 @@ export function GalleryGrid({
   isLoading = false,
   selectedTags = [],
   searchQuery = "",
-  currentPage = 1
+  currentPage = 1,
+  sortBy = 'newest'
 }: GalleryGridProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [likedPhotos, setLikedPhotos] = useState<Set<string>>(new Set());
@@ -42,13 +46,24 @@ export function GalleryGrid({
     return matchesTags && matchesSearch;
   });
 
+  // undated photos sort last instead of producing Invalid Date/NaN comparisons
+  const sortedPhotos = [...filteredPhotos].sort((a, b) => {
+    if (sortBy === 'likes') {
+      return (b.likes + Number(likedPhotos.has(b.id))) -
+        (a.likes + Number(likedPhotos.has(a.id)));
+    }
+    if (sortBy === 'views') return b.views - a.views;
+    const dateA = a.dateTaken ? new Date(a.dateTaken).getTime() : 0;
+    const dateB = b.dateTaken ? new Date(b.dateTaken).getTime() : 0;
+    return dateB - dateA;
+  });
+
   // Calculate pagination
-  const totalPhotos = filteredPhotos.length;
+  const totalPhotos = sortedPhotos.length;
   const photosPerPage = limit;
-  const totalPages = Math.ceil(totalPhotos / photosPerPage);
   const startIndex = 0;
   const endIndex = currentPage * photosPerPage;
-  const displayedPhotos = filteredPhotos.slice(startIndex, endIndex);
+  const displayedPhotos = sortedPhotos.slice(startIndex, endIndex);
   const hasMore = endIndex < totalPhotos;
 
   const toggleLike = (photoId: string) => {
