@@ -1,8 +1,45 @@
+"use client";
+
+import { useMemo, useRef, useState } from "react";
 import { Settings, Users, Globe } from "lucide-react";
 import { UploadZone } from "@/components/upload/UploadZone";
 import { SectionContainer, SectionTitle, FeatureCard, Hero } from "@/components/ui";
+import { AVAILABLE_TAGS } from "@/lib/mock-tag-data";
 
 export default function UploadPage() {
+  const [tagsValue, setTagsValue] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const tagsInputRef = useRef<HTMLInputElement>(null);
+
+  // Tags are comma-separated; parse everything before the token being typed.
+  const { committedTags, currentToken } = useMemo(() => {
+    const parts = tagsValue.split(",");
+    const current = parts[parts.length - 1].trim().toLowerCase();
+    const committed = parts
+      .slice(0, -1)
+      .map((tag) => tag.trim().toLowerCase())
+      .filter(Boolean);
+    return { committedTags: committed, currentToken: current };
+  }, [tagsValue]);
+
+  const suggestions = useMemo(() => {
+    return AVAILABLE_TAGS.filter(
+      (tag) =>
+        !committedTags.includes(tag) &&
+        (currentToken === "" || tag.includes(currentToken))
+    ).slice(0, 8);
+  }, [committedTags, currentToken]);
+
+  const addTag = (tag: string) => {
+    const nextValue =
+      committedTags.length > 0
+        ? `${committedTags.join(", ")}, ${tag}, `
+        : `${tag}, `;
+    setTagsValue(nextValue);
+    setShowSuggestions(true);
+    tagsInputRef.current?.focus();
+  };
+
   return (
     <div className="page-gradient">
       <Hero 
@@ -77,15 +114,44 @@ export default function UploadPage() {
             </div>
 
             {/* Tags */}
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 relative">
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 Tags (comma-separated)
               </label>
               <input
+                ref={tagsInputRef}
                 type="text"
+                value={tagsValue}
+                onChange={(e) => {
+                  setTagsValue(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
                 placeholder="wedding, portrait, outdoor, professional..."
                 className="form-input"
+                autoComplete="off"
+                role="combobox"
+                aria-expanded={showSuggestions && suggestions.length > 0}
+                aria-autocomplete="list"
               />
+
+              {showSuggestions && suggestions.length > 0 && (
+                <ul className="absolute z-10 mt-1 w-full max-h-56 overflow-auto rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg">
+                  {suggestions.map((tag) => (
+                    <li key={tag}>
+                      <button
+                        type="button"
+                        onMouseDown={(e) => e.preventDefault()}
+                        onClick={() => addTag(tag)}
+                        className="w-full text-left px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700"
+                      >
+                        {tag}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
 
             {/* Copyright */}

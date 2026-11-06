@@ -1,0 +1,218 @@
+name: xlc-app-cpp-core-svc-build
+
+# Migrated from Harness pipeline: xlc-app-cpp-core-svc-build (identifier: xlcappcppcoresvcbuild)
+# Original stage: ci-build (type: CI, KubernetesDirect infra) -> single job on a runner.
+
+on:
+  # Harness codebase clone + PR-target-branch logic -> pull_request + manual dispatch.
+  pull_request:
+    branches: [QA, release]
+    types: [opened, synchronize, reopened, closed]
+  workflow_dispatch:
+    inputs:
+      serviceRepo:
+        description: "Service repo to build"
+        required: true
+        type: choice
+        options:
+          - audit-svc
+          - catalog-svc
+          - core-svc
+          - harness-svc
+          - openpaas-svc
+          - workspace-svc
+          - user-svc
+          - fe-portal
+      run_test:
+        description: "Run unit tests"
+        required: true
+        type: choice
+        options: ["true", "false"]
+        default: "true"
+      image:
+        description: "Build container image"
+        required: true
+        type: string
+        default: artifactory.platform.axaxl-cloud.com/docker/tools/ubi8/openjdk-17:1.16-1.1687182768
+      mvn_command:
+        description: "Maven goal for the package step"
+        required: true
+        type: string
+        default: deploy
+      mvn_test_command:
+        description: "Additional Maven test args"
+        required: false
+        type: string
+        default: ""
+      memoryLimit:
+        description: "Memory limit (informational on hosted runners)"
+        required: false
+        type: string
+        default: 4G
+
+# Harness pipeline/stage variables -> workflow-level env.
+# NOTE: on pull_request events the workflow_dispatch inputs are empty, so defaults are applied below.
+env:
+  SERVICE_REPO: ${{ inputs.serviceRepo }}
+  RUN_TEST: ${{ inputs.run_test || 'true' }}
+  BUILD_IMAGE: ${{ inputs.image || 'artifactory.platform.axaxl-cloud.com/docker/tools/ubi8/openjdk-17:1.16-1.1687182768' }}
+  MVN_COMMAND: ${{ inputs.mvn_command || 'deploy' }}
+  MVN_TEST_COMMAND: ${{ inputs.mvn_test_command }}
+  SETTINGS_XML_PATH: settings.xml
+  # <+project.identifier> in Harness -> reused as a local path segment.
+  PROJECT_IDENTIFIER: xlcapp0001clou
+  PLUGIN_ARTIFACTORY_USERNAME: panda-jfrog
+  PLUGIN_ONESTART_USER: xlcatlin
+  PLUGIN_MAVEN_PROXY: pxy-srv-nadc.corp.intraxa
+  # <+pipeline.sequenceId> -> GitHub run number as the image tag.
+  PIPELINE_ID: ${{ github.run_number }}
+  ARTIFACTORY_REGISTRY: artifactory.platform.axaxl-cloud.com
+  DOCKER_REPO_BASE: artifactory.platform.axaxl-cloud.com/xlcpa-cloud-platform-portal-docker
+
+jobs:
+  ci-build:
+    name: ci-build
+    # Harness KubernetesDirect (connector org.zxlctranpacpdvue2ocppandaprovisioning, ns builds-shared-axa-xl)
+    # defaulted to a GitHub-hosted runner. TODO: switch to a self-hosted runner if the build must run
+    # inside the builds-shared-axa-xl cluster / private network (Artifactory + corp proxy reachability).
+    runs-on: ubuntu-latest
+    # Harness "image" stage variable -> run all steps inside that container.
+    container:
+      image: ${{ inputs.image || 'artifactory.platform.axaxl-cloud.com/docker/tools/ubi8/openjdk-17:1.16-1.1687182768' }}
+      credentials:
+        username: ${{ secrets.ARTIFACTORY_USERNAME }}
+        password: ${{ secrets.ARTIFACTORY_PASSWORD }}
+    env:
+      ARTIFACTORY_USER: ${{ env.PLUGIN_ARTIFACTORY_USERNAME }}
+      ARTIFACTORY_PWD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+      PLUGIN_ONESTART_USER: ${{ env.PLUGIN_ONESTART_USER }}
+      PLUGIN_ONESTART_PAT: ${{ secrets.ONESTART_PAT }}
+      PLUGIN_MAVEN_PROXY: ${{ env.PLUGIN_MAVEN_PROXY }}
+      npm_config_cache: /harness/${{ env.PROJECT_IDENTIFIER }}/.npm
+    steps:
+      - name: Checkout
+        # cloneCodebase: true (repo: xlc-app-cpp-<serviceRepo>, connector ghe0001clou)
+        uses: actions/checkout@v4
+
+      # Harness stepGroup "restore" (template account.buildcache, cacheAction: restore)
+      # + sharedPaths -> actions/cache restore of the Maven/npm caches.
+      - name: Restore build cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            /harness/${{ env.PROJECT_IDENTIFIER }}/.m2/repository
+            /harness/${{ env.PROJECT_IDENTIFIER }}/.npm
+          key: buildcache-${{ env.SERVICE_REPO }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            buildcache-${{ env.SERVICE_REPO }}-
+
+      # Harness RunTests step "mvn-test" (Java/Maven, runOnlySelectedTests: true).
+      # NOTE: Harness Test Intelligence (runOnlySelectedTests) has no direct Actions equivalent;
+      # this runs the full test goal instead. TODO: wire up test selection if required.
+      - name: mvn-test
+        if: ${{ (inputs.run_test || 'true') == 'true' }}
+        run: |
+          echo "### java version ###"
+          java -version
+          echo "### maven version ###"
+          mvn -v
+          mvn --settings "${SETTINGS_XML_PATH}" test \
+            -Dmaven.repo.local=/harness/${PROJECT_IDENTIFIER}/.m2/repository/ ${MVN_TEST_COMMAND}
+
+      - name: Publish JUnit test report
+        if: ${{ always() && (inputs.run_test || 'true') == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: /harness/${{ env.PROJECT_IDENTIFIER }}/surefire-reports/*.xml
+          if-no-files-found: ignore
+
+      # Harness Run step "package_build" (mvn <command> -DskipTests=true).
+      - name: package_build
+        run: |
+          echo "### java version ###"
+          java -version
+          echo "### maven version ###"
+          mvn -v
+          mvn ${MVN_COMMAND} --settings "${SETTINGS_XML_PATH}" -DskipTests=true \
+            -Dmaven.repo.local=/harness/${PROJECT_IDENTIFIER}/.m2/repository/
+
+      # Harness stepGroup "rebuild" (template account.buildcache, cacheAction: rebuild)
+      # -> save the caches for the next run.
+      - name: Save build cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /harness/${{ env.PROJECT_IDENTIFIER }}/.m2/repository
+            /harness/${{ env.PROJECT_IDENTIFIER }}/.npm
+          key: buildcache-${{ env.SERVICE_REPO }}-${{ hashFiles('**/pom.xml') }}
+
+  # Harness "parallel" block of Plugin steps (xlc-panda-buildah) -> separate jobs.
+  # Original used the buildah plugin to build docker/Dockerfile and push to Artifactory.
+  # TODO: confirm buildah-specific behavior (privileged: false); docker/build-push-action is used here.
+
+  docker-dev:
+    name: docker-dev
+    needs: ci-build
+    # Harness: prTargetBranch != "QA" && prTargetBranch != "release"
+    if: ${{ github.base_ref != 'QA' && github.base_ref != 'release' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to Artifactory
+        uses: docker/login-action@v3
+        with:
+          registry: artifactory.platform.axaxl-cloud.com
+          username: ${{ secrets.JFROG_ARTIFACTORY_USERNAME }}
+          password: ${{ secrets.JFROG_ARTIFACTORY_PASSWORD }}
+      - name: Build and push (dev)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          tags: artifactory.platform.axaxl-cloud.com/xlcpa-cloud-platform-portal-docker/${{ inputs.serviceRepo }}:${{ github.run_number }}
+
+  docker-qa:
+    name: docker-qa
+    needs: ci-build
+    # Harness: prTargetBranch == "QA" && prState == "closed"
+    if: ${{ github.base_ref == 'QA' && github.event.pull_request.state == 'closed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to Artifactory
+        uses: docker/login-action@v3
+        with:
+          registry: artifactory.platform.axaxl-cloud.com
+          username: ${{ secrets.JFROG_ARTIFACTORY_USERNAME }}
+          password: ${{ secrets.JFROG_ARTIFACTORY_PASSWORD }}
+      - name: Build and push (qa/preprod)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          tags: artifactory.platform.axaxl-cloud.com/xlcpa-cloud-platform-portal-docker/${{ inputs.serviceRepo }}:${{ github.run_number }}-preprod
+
+  docker-release:
+    name: docker-release
+    needs: ci-build
+    # Harness: prTargetBranch == "release" && prState == "closed"
+    if: ${{ github.base_ref == 'release' && github.event.pull_request.state == 'closed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log in to Artifactory
+        uses: docker/login-action@v3
+        with:
+          registry: artifactory.platform.axaxl-cloud.com
+          username: ${{ secrets.JFROG_ARTIFACTORY_USERNAME }}
+          password: ${{ secrets.JFROG_ARTIFACTORY_PASSWORD }}
+      - name: Build and push (release/latest)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          tags: artifactory.platform.axaxl-cloud.com/xlcpa-cloud-platform-portal-docker/${{ inputs.serviceRepo }}:${{ github.run_number }}-latest
